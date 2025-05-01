@@ -6,6 +6,8 @@
   --color-text-2: #6b7573;
   --color-text-3: #889290;
 
+  --width-sidebar: 240px;
+
   --font-size-xs: 0.625rem; /* 10px */
   --font-size-sm: 0.75rem; /* 12px */
   --font-size-md: 0.875rem; /* 14px */
