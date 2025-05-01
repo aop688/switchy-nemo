@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router';
 import styles from './home.module.css';
 
 const HomeView = () => {

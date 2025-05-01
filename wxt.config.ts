@@ -7,8 +7,8 @@ export default defineConfig({
   manifest: env => {
     const manifest: UserManifest = {
       // languages https://developer.chrome.com/docs/extensions/reference/api/i18n?hl=zh-cn#locales
-      name: '__MSG_extName__',
-      description: '__MSG_extDescription__',
+      name: '__MSG_appName__',
+      description: '__MSG_description__',
       default_locale: 'en',
       permissions: ['activeTab', 'storage'],
       web_accessible_resources: [],
