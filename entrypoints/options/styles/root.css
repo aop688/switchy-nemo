@@ -1,0 +1,22 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-text-0: #222726;
+  --color-text-1: #464e4d;
+  --color-text-2: #6b7573;
+  --color-text-3: #889290;
+
+  --font-size-xs: 0.625rem; /* 10px */
+  --font-size-sm: 0.75rem; /* 12px */
+  --font-size-md: 0.875rem; /* 14px */
+  --font-size-lg: 1rem; /* 16px */
+  --font-size-xl: 1.125rem; /* 18px */
+  --font-size-2xl: 1.25rem; /* 20px */
+  --font-size-3xl: 1.5rem; /* 24px */
+  --font-size-4xl: 1.75rem; /* 28px */
+  --font-size-5xl: 2rem; /* 32px */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+}

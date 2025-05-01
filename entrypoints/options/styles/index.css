@@ -1,0 +1,22 @@
+@import 'ress';
+@import './root.css';
+
+html {
+  color: var(--color-text-0);
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Inter, 'SF UI Text', -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft YaHei UI',
+    'Microsoft YaHei', Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+#root {
+  height: 100%;
+  touch-action: manipulation;
+}

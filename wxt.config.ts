@@ -4,6 +4,9 @@ import { defineConfig, UserManifest } from 'wxt';
 export default defineConfig({
   modules: ['@wxt-dev/module-react'],
   manifestVersion: 3,
+  alias: {
+    '@options': './entrypoints/options'
+  },
   manifest: env => {
     const manifest: UserManifest = {
       // languages https://developer.chrome.com/docs/extensions/reference/api/i18n?hl=zh-cn#locales
