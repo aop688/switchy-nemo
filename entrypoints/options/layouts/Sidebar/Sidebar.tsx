@@ -27,10 +27,10 @@ const Sidebar = () => {
           <h2 className={styles.heading}>Settings</h2>
           <ol className={styles.navList}>
             <li className={styles.navItem}>
-              <Link to="/">Home</Link>
+              <Link to="/general">General</Link>
             </li>
             <li className={styles.navItem}>
-              <Link to="/about">About</Link>
+              <Link to="/transfer">Import/Export</Link>
             </li>
           </ol>
         </nav>

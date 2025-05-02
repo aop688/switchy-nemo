@@ -1,4 +1,5 @@
 import { defineConfig, UserManifest } from 'wxt';
+import svgr from 'vite-plugin-svgr';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -27,5 +28,8 @@ export default defineConfig({
       host_permissions: ['https://*/*', 'http://*/*']
     };
     return manifest;
-  }
+  },
+  vite: () => ({
+    plugins: [svgr()]
+  })
 });
