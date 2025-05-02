@@ -34,7 +34,7 @@
 }
 
 .nav {
-  display: block;
+  margin: 8px 0;
 
   &List {
     list-style: none;
