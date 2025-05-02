@@ -1,4 +1,14 @@
 :root {
+  --color-primary: #0078d4;
+  --color-primary-hover: #106ebe;
+  --color-primary-selected: #005a9e;
+  --color-primary-disabled: #c8c8c8;
+  --color-primary-text: var(--color-white);
+
+  --color-tertiary-light: rgba(249, 249, 249, 0.5);
+  --color-tertiary-light-hover: rgba(230, 234, 233, 0.5);
+  --color-tertiary-light-selected: rgba(198, 205, 203, 0.5);
+
   --color-white: #fff;
   --color-black: #000;
   --color-text-0: #222726;

@@ -26,3 +26,42 @@
     font-weight: var(--font-weight-bold);
   }
 }
+
+.heading {
+  padding: 8px 16px;
+  color: var(--color-text-2);
+  font-size: var(--font-size-sm);
+}
+
+.nav {
+  display: block;
+
+  &List {
+    list-style: none;
+    font-size: var(--font-size-md);
+  }
+
+  &Item {
+    height: 40px;
+  }
+}
+
+.link {
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: var(--color-tertiary-light-hover);
+  }
+
+  &.activated {
+    background-color: var(--color-tertiary-light-selected);
+  }
+}
