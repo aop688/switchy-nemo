@@ -1,3 +1,20 @@
 .general {
-  display: block;
+  padding: 0 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--height-header);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }

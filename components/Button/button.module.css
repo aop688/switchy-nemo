@@ -1,0 +1,178 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semi-bold);
+  border-radius: var(--border-radius-sm);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &.small {
+    height: 32px;
+    padding: 0 8px;
+  }
+
+  &.medium {
+    height: 40px;
+    padding: 0 16px;
+  }
+
+  &.large {
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  &.filled {
+    color: var(--color-primary-text);
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--color-primary-hover);
+      background-color: var(--color-primary-hover);
+    }
+
+    &:disabled {
+      border: 1px solid var(--color-primary-disabled);
+      background-color: var(--color-primary-disabled);
+      cursor: not-allowed;
+    }
+
+    &.selected {
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-primary);
+    }
+  }
+
+  &.filled-danger {
+    color: var(--color-primary-text);
+    border: 1px solid var(--color-danger);
+    background-color: var(--color-danger);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--color-danger-hover);
+      background-color: var(--color-danger-hover);
+    }
+
+    &:disabled {
+      color: var(--color-disabled-text);
+      border: 1px solid var(--color-disabled-border);
+      background-color: var(--color-disabled-bg);
+      cursor: not-allowed;
+    }
+  }
+
+  &.outlined {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-primary-light-hover);
+    }
+
+    &:disabled {
+      color: var(--color-disabled-text);
+      border: 1px solid var(--color-disabled-border);
+      background-color: var(--color-disabled-bg);
+      cursor: not-allowed;
+    }
+
+    &.selected {
+      color: var(--color-primary-text);
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-primary);
+    }
+  }
+
+  &.outlined-danger {
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-danger-light-hover);
+    }
+
+    &:disabled {
+      color: var(--color-disabled-text);
+      border: 1px solid var(--color-disabled-border);
+      background-color: var(--color-disabled-bg);
+      cursor: not-allowed;
+    }
+  }
+
+  &.text {
+    color: var(--color-primary);
+    border: 1px solid transparent;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--color-tertiary-light-hover);
+      background-color: var(--color-tertiary-light-hover);
+    }
+
+    &:disabled {
+      color: var(--color-disabled-text);
+      border: 1px solid transparent;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+
+    &.selected {
+      border: 1px solid var(--color-primary-light-hover);
+      background-color: var(--color-primary-light-hover);
+    }
+  }
+
+  &.text-secondary {
+    color: var(--color-tertiary);
+    border: 1px solid transparent;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--color-tertiary-light-hover);
+      background-color: var(--color-tertiary-light-hover);
+    }
+
+    &:disabled {
+      color: var(--color-disabled-text);
+      border: 1px solid transparent;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+
+    &.selected {
+      border: 1px solid var(--color-tertiary-light-hover);
+      background-color: var(--color-tertiary-light-hover);
+    }
+  }
+
+  &.text-danger {
+    color: var(--color-danger);
+    border: 1px solid transparent;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--color-danger-light-hover);
+      background-color: var(--color-danger-light-hover);
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  color: inherit;
+}
