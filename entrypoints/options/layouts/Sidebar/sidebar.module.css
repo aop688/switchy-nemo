@@ -5,6 +5,7 @@
   background-color: var(--color-bg-0);
   border-right: 1px solid var(--color-border-1);
 }
+
 .inner {
   position: absolute;
   width: 100%;
@@ -12,4 +13,16 @@
   top: 0;
   left: 0;
   overflow: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--height-header);
+
+  &Title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+  }
 }
