@@ -9,6 +9,10 @@
   --color-tertiary-light-hover: rgba(230, 234, 233, 0.5);
   --color-tertiary-light-selected: rgba(198, 205, 203, 0.5);
 
+  --color-disabled-bg: #e6eae9;
+  --color-disabled-text: #c6cdcb;
+  --color-disabled-border: #e6eae9;
+
   --color-white: #fff;
   --color-black: #000;
   --color-text-0: #222726;
