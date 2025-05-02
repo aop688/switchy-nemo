@@ -5,9 +5,9 @@
   --color-primary-disabled: #97cdfb;
   --color-primary-text: var(--color-white);
 
-  --color-primary-light: rgba(226, 246, 239, 0.5);
-  --color-primary-light-hover: rgba(226, 246, 239, 0.5);
-  --color-primary-light-selected: rgba(130, 217, 193, 0.5);
+  --color-primary-light: rgba(226, 235, 246, 0.5);
+  --color-primary-light-hover: rgba(226, 236, 246, 0.5);
+  --color-primary-light-selected: rgba(130, 184, 217, 0.5);
 
   --color-tertiary: #6b7573;
   --color-tertiary-hover: #889290;

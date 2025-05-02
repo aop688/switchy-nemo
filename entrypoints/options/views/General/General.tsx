@@ -7,10 +7,9 @@ const GeneralView = () => {
       <header className={styles.header}>
         <h1 className={styles.title}>General</h1>
         <div className={styles.actions}>
-          <Button loading>Save</Button>
-          <Button variant="filled-danger" loading>
-            Delete
-          </Button>
+          <Button>Save</Button>
+          <Button variant="outlined">Cancel</Button>
+          <Button variant="filled-danger">Delete</Button>
         </div>
       </header>
     </div>

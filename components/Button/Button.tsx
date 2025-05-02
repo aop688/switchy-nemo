@@ -14,7 +14,6 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
       loading = false,
       type = 'button',
       disabled = false,
-      selected = false,
       className = '',
       to,
       relative,
@@ -34,9 +33,6 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
             styles.button,
             styles[size],
             styles[variant],
-            {
-              [styles.selected]: selected
-            },
             className
           )}
           to={to}
@@ -56,9 +52,6 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
             styles.button,
             styles[size],
             styles[variant],
-            {
-              [styles.selected]: selected
-            },
             className
           )}
           {...rest}

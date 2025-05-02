@@ -43,11 +43,6 @@
       background-color: var(--color-primary-disabled);
       cursor: not-allowed;
     }
-
-    &.selected {
-      border: 1px solid var(--color-primary);
-      background-color: var(--color-primary);
-    }
   }
 
   &.filled-danger {
@@ -83,89 +78,6 @@
       border: 1px solid var(--color-disabled-border);
       background-color: var(--color-disabled-bg);
       cursor: not-allowed;
-    }
-
-    &.selected {
-      color: var(--color-primary-text);
-      border: 1px solid var(--color-primary);
-      background-color: var(--color-primary);
-    }
-  }
-
-  &.outlined-danger {
-    color: var(--color-danger);
-    border: 1px solid var(--color-danger);
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-danger-light-hover);
-    }
-
-    &:disabled {
-      color: var(--color-disabled-text);
-      border: 1px solid var(--color-disabled-border);
-      background-color: var(--color-disabled-bg);
-      cursor: not-allowed;
-    }
-  }
-
-  &.text {
-    color: var(--color-primary);
-    border: 1px solid transparent;
-    background-color: transparent;
-
-    &:hover,
-    &:focus {
-      border: 1px solid var(--color-tertiary-light-hover);
-      background-color: var(--color-tertiary-light-hover);
-    }
-
-    &:disabled {
-      color: var(--color-disabled-text);
-      border: 1px solid transparent;
-      background-color: transparent;
-      cursor: not-allowed;
-    }
-
-    &.selected {
-      border: 1px solid var(--color-primary-light-hover);
-      background-color: var(--color-primary-light-hover);
-    }
-  }
-
-  &.text-secondary {
-    color: var(--color-tertiary);
-    border: 1px solid transparent;
-    background-color: transparent;
-
-    &:hover,
-    &:focus {
-      border: 1px solid var(--color-tertiary-light-hover);
-      background-color: var(--color-tertiary-light-hover);
-    }
-
-    &:disabled {
-      color: var(--color-disabled-text);
-      border: 1px solid transparent;
-      background-color: transparent;
-      cursor: not-allowed;
-    }
-
-    &.selected {
-      border: 1px solid var(--color-tertiary-light-hover);
-      background-color: var(--color-tertiary-light-hover);
-    }
-  }
-
-  &.text-danger {
-    color: var(--color-danger);
-    border: 1px solid transparent;
-    background-color: transparent;
-
-    &:hover,
-    &:focus {
-      border: 1px solid var(--color-danger-light-hover);
-      background-color: var(--color-danger-light-hover);
     }
   }
 }
