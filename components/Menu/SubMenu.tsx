@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import cls from 'clsx';
 import { Down } from '@/assets/icons';
-import { useRandomId } from '@/hooks';
+import { useRandomId } from '@/hooks/useRandomId';
 import { MenuContext, useMenuContext } from './context';
 import styles from './menu.module.css';
 import { ISubMenuProps } from './Menu.types';
