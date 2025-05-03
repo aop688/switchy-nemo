@@ -2,3 +2,8 @@ export { default as Down } from './chevron-down.svg?react';
 export { default as Save } from './save.svg?react';
 export { default as Settings } from './settings.svg?react';
 export { default as Loading } from './loading.svg?react';
+export { default as Close } from './close.svg?react';
+export { default as Error } from './error.svg?react';
+export { default as Info } from './info.svg?react';
+export { default as Success } from './success.svg?react';
+export { default as Warning } from './warning.svg?react';

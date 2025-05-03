@@ -1,8 +1,5 @@
 import { useState } from 'react';
-
-function randomId() {
-  return Math.random().toString(36).substring(2, 9);
-}
+import { randomId } from '@/utils/misc';
 
 export function useRandomId(staticId?: string) {
   const [id] = useState(randomId());

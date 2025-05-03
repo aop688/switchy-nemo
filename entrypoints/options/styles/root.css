@@ -68,6 +68,15 @@
   --border-radius-lg: 28px;
   --border-radius-circle: 50%;
 
+  --color-shadow-0: rgba(0, 0, 0, 0.02);
+  --color-shadow-1: rgba(0, 0, 0, 0.06);
+  --color-shadow-2: rgba(0, 0, 0, 0.1);
+  --color-shadow-3: rgba(0, 0, 0, 0.3);
+
+  --shadow-highlight: 0 0 1px 0 var(--color-shadow-3),
+    0 16px 16px 0 var(--color-shadow-1);
+  --shadow-medium: 0px 8px 8px 0px var(--color-shadow-0);
+
   --width-sidebar: 240px;
   --height-header: 64px;
 
@@ -84,4 +93,7 @@
   --font-weight-medium: 500;
   --font-weight-semi-bold: 600;
   --font-weight-bold: 700;
+
+  --z-index-dialog: 1400;
+  --z-index-message: 1500;
 }
