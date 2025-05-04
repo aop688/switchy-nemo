@@ -1,0 +1,23 @@
+.textarea {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: var(--border-radius-xs);
+  border: 1px solid var(--color-border-1);
+  color: var(--color-text-0);
+  background-color: var(--color-white);
+
+  &:disabled {
+    color: var(--color-disabled-text);
+    cursor: not-allowed;
+  }
+
+  &:invalid,
+  &.invalid {
+    border: 1px solid var(--color-danger);
+  }
+
+  &:not([disabled], .invalid):hover,
+  &:not([disabled], .invalid):focus {
+    border: 1px solid var(--color-primary);
+  }
+}

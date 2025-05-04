@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
+import { noop } from '@/utils/misc';
 import { MenuContextProps } from './Menu.types';
-
-export const noop = () => {};
 
 const defaultContext = {
   currentMenu: [],
