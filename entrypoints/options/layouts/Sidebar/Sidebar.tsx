@@ -1,9 +1,44 @@
-import { Menu } from '@/components';
+import { Menu, Form, FormValues, Rules } from '@/components';
 import { Settings, Save, Plus } from '@/assets/icons';
 import styles from './sidebar.module.css';
 
+type Profile = {
+  name: string;
+};
+
 const Sidebar = () => {
   const [showAddProfile, setShowAddProfile] = useState(false);
+  const [profile, setProfile] = useState<FormValues>({
+    name: ''
+  });
+  const [valid, setValid] = useState(true);
+
+  const profileRules: Rules = useMemo(
+    () => ({
+      name: [
+        {
+          required: true,
+          message: 'The name of the profile is required.',
+          trigger: ['change', 'blur']
+        }
+      ]
+    }),
+    []
+  );
+
+  const addProfile = useCallback(() => {
+    setProfile({
+      name: ''
+    });
+    setShowAddProfile(true);
+  }, []);
+
+  const saveProfile = useCallback(() => {
+    // todo
+    console.log('add profile', profile);
+    setShowAddProfile(false);
+  }, []);
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.inner}>
@@ -22,7 +57,7 @@ const Sidebar = () => {
           <button
             className={styles.addProfile}
             title="New profile"
-            onClick={() => setShowAddProfile(true)}
+            onClick={addProfile}
           >
             <Plus className={styles.addIcon} />
           </button>
@@ -30,12 +65,36 @@ const Sidebar = () => {
         <Dialog
           visible={showAddProfile}
           title={'New Profile'}
-          onOK={() => setShowAddProfile(false)}
-          onCancel={() => setShowAddProfile(false)}
-          okText={'Create'}
-          cancelText={'Close'}
+          footer={
+            <div className={styles.newProfileFooter}>
+              <Button
+                variant="outlined"
+                onClick={() => setShowAddProfile(false)}
+              >
+                Close
+              </Button>
+              <Button type="submit" form="addProfile" disabled={!valid}>
+                Create
+              </Button>
+            </div>
+          }
         >
-          <div className={styles.dialog}>{'Dialog Body Content'}</div>
+          <div className={styles.newProfile}>
+            <Form
+              values={profile}
+              onValuesChange={setProfile}
+              onValidateChange={setValid}
+              id="addProfile"
+              rules={profileRules}
+              onSubmit={saveProfile}
+              layout="vertical"
+              showRequired={false}
+            >
+              <Form.Item label={'Profile name'} field="name">
+                <Input />
+              </Form.Item>
+            </Form>
+          </div>
         </Dialog>
       </div>
     </aside>
