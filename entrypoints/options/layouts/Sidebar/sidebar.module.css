@@ -34,6 +34,7 @@
 }
 
 .nav {
+  position: relative;
   margin: 8px 0;
 
   &List {
@@ -64,4 +65,33 @@
   &.activated {
     background-color: var(--color-tertiary-light-selected);
   }
+}
+
+.addProfile {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  color: var(--color-text-2);
+
+  &:hover,
+  &:focus {
+    color: var(--color-text-1);
+    background-color: var(--color-tertiary-light-hover);
+  }
+}
+
+.addIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.dialog {
+  padding: 16px 0;
+  margin-bottom: 24px;
 }

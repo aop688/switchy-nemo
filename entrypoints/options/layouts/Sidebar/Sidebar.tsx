@@ -1,8 +1,9 @@
 import { Menu } from '@/components';
-import { Settings, Save } from '@/assets/icons';
+import { Settings, Save, Plus } from '@/assets/icons';
 import styles from './sidebar.module.css';
 
 const Sidebar = () => {
+  const [showAddProfile, setShowAddProfile] = useState(false);
   return (
     <aside className={styles.sidebar}>
       <div className={styles.inner}>
@@ -18,7 +19,24 @@ const Sidebar = () => {
         </nav>
         <nav className={styles.nav}>
           <h2 className={styles.heading}>Profiles</h2>
+          <button
+            className={styles.addProfile}
+            title="New profile"
+            onClick={() => setShowAddProfile(true)}
+          >
+            <Plus className={styles.addIcon} />
+          </button>
         </nav>
+        <Dialog
+          visible={showAddProfile}
+          title={'New Profile'}
+          onOK={() => setShowAddProfile(false)}
+          onCancel={() => setShowAddProfile(false)}
+          okText={'Create'}
+          cancelText={'Close'}
+        >
+          <div className={styles.dialog}>{'Dialog Body Content'}</div>
+        </Dialog>
       </div>
     </aside>
   );
