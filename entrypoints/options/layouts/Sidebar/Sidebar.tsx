@@ -2,10 +2,6 @@ import { Menu, Form, FormValues, Rules } from '@/components';
 import { Settings, Save, Plus } from '@/assets/icons';
 import styles from './sidebar.module.css';
 
-type Profile = {
-  name: string;
-};
-
 const Sidebar = () => {
   const [showAddProfile, setShowAddProfile] = useState(false);
   const [profile, setProfile] = useState<FormValues>({
