@@ -1,11 +1,11 @@
-import { Button, message } from '@/components';
+import { Button, Dialog } from '@/components';
 import styles from './general.module.css';
 
 const GeneralView = () => {
+  const [visible, setVisible] = useState(false);
   const showMessage = () => {
-    message.success('This is a success message');
+    setVisible(true);
   };
-
   return (
     <div className={styles.general}>
       <header className={styles.header}>
@@ -15,6 +15,18 @@ const GeneralView = () => {
           <Button variant="outlined">Cancel</Button>
           <Button variant="filled-danger">Delete</Button>
         </div>
+        <Dialog
+          visible={visible}
+          title={'Dialog Title'}
+          onOK={() => setVisible(false)}
+          onCancel={() => setVisible(false)}
+          onClose={() => setVisible(false)}
+          closable
+          okText={'Confirm'}
+          cancelText={'Close'}
+        >
+          <div className={styles.dialog}>{'Dialog Body Content'}</div>
+        </Dialog>
       </header>
     </div>
   );

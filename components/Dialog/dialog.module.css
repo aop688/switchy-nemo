@@ -1,0 +1,110 @@
+.dialog {
+  max-height: 100vh;
+  min-width: min(440px, 90vw);
+  font-size: 16px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-bg-0);
+  box-shadow: var(--shadow-highlight);
+  overflow: auto;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    font-weight: var(--font-weight-semi-bold);
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+
+    &Button {
+      margin: 0;
+    }
+  }
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-overlay-bg);
+  z-index: var(--z-index-dialog);
+
+  &Enter {
+    opacity: 0;
+
+    .dialog {
+      transform: scale(0.9);
+    }
+  }
+
+  &EnterActive {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    .dialog {
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &Exit {
+    opacity: 1;
+
+    .dialog {
+      transform: scale(1);
+    }
+  }
+
+  &ExitActive {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    .dialog {
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--border-radius-circle);
+  color: var(--color-tertiary);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-tertiary-light-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &Icon {
+    width: 24px;
+    height: 24px;
+  }
+}
