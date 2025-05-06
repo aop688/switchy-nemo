@@ -1,0 +1,21 @@
+.profile {
+  padding: 0 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--height-header);
+  border-bottom: 1px solid var(--color-border-1);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

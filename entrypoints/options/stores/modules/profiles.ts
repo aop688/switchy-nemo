@@ -42,6 +42,7 @@ export class ProfilesStore {
     this.profiles = this.profiles.filter(p => p.id !== profile.id);
     localStorage.setItem(PROFILES, JSON.stringify(this.profiles));
   }
+
   @action
   updateProfile(profile: Profile) {
     const index = this.profiles.findIndex(p => p.id === profile.id);
@@ -49,6 +50,11 @@ export class ProfilesStore {
       this.profiles[index] = profile;
       localStorage.setItem(PROFILES, JSON.stringify(this.profiles));
     }
+  }
+
+  @action
+  getProfileById(id: string) {
+    return this.profiles.find(profile => profile.id === id);
   }
 
   @action
