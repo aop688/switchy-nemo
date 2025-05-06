@@ -19,3 +19,24 @@
   gap: 8px;
   align-items: center;
 }
+
+.deleteProfile {
+  padding: 16px 0;
+  font-size: var(--font-size-md);
+
+  &Name {
+    margin: 8px 0;
+    padding: 12px;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semi-bold);
+    border-radius: var(--border-radius-xs);
+    background-color: var(--color-bg-2);
+  }
+
+  &Footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
