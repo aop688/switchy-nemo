@@ -47,7 +47,7 @@ const Sidebar = observer(() => {
     <aside className={styles.sidebar}>
       <div className={styles.inner}>
         <div className={styles.logo}>
-          <h1 className={styles.logoTitle}>Switchy Nimo</h1>
+          <h1 className={styles.logoTitle}>Switchy Nemo</h1>
         </div>
         <nav className={styles.nav}>
           <h2 className={styles.heading}>Settings</h2>

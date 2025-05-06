@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export const namespace = 'nimo.local';
+export const namespace = 'nemo.local';
 
 export function uuid() {
   return self.crypto.randomUUID();
