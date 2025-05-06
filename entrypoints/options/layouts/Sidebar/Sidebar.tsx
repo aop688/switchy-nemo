@@ -1,10 +1,16 @@
+import { useState, useMemo, useCallback } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Menu, Form, FormValues, Rules } from '@/components';
+import { useStore, Profile } from '@options/stores';
 import { Settings, Save, Plus } from '@/assets/icons';
+import { uuid } from '@/utils/misc';
 import styles from './sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = observer(() => {
+  const { profiles } = useStore();
   const [showAddProfile, setShowAddProfile] = useState(false);
   const [profile, setProfile] = useState<FormValues>({
+    id: uuid(),
     name: ''
   });
   const [valid, setValid] = useState(true);
@@ -24,16 +30,18 @@ const Sidebar = () => {
 
   const addProfile = useCallback(() => {
     setProfile({
+      id: uuid(),
       name: ''
     });
     setShowAddProfile(true);
   }, []);
 
   const saveProfile = useCallback(() => {
-    // todo
-    console.log('add profile', profile);
-    setShowAddProfile(false);
-  }, []);
+    if (valid) {
+      profiles.addProfile(profile as Profile);
+      setShowAddProfile(false);
+    }
+  }, [profile]);
 
   return (
     <aside className={styles.sidebar}>
@@ -95,6 +103,6 @@ const Sidebar = () => {
       </div>
     </aside>
   );
-};
+});
 
 export default Sidebar;

@@ -1,9 +1,17 @@
 import { defineConfig, UserManifest } from 'wxt';
+import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   modules: ['@wxt-dev/module-react'],
+  react: {
+    vite: {
+      babel: {
+        plugins: [['@babel/plugin-proposal-decorators', { version: '2023-05' }]]
+      }
+    }
+  },
   manifestVersion: 3,
   alias: {
     '@options': './entrypoints/options'

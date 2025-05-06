@@ -1,5 +1,9 @@
 export const namespace = 'nimo.local';
 
+export function uuid() {
+  return self.crypto.randomUUID();
+}
+
 export function randomId() {
   return Math.random().toString(36).substring(2, 9);
 }

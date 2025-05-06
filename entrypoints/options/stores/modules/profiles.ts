@@ -4,7 +4,7 @@ import { namespace } from '@/utils/misc';
 export const PROFILES = `${namespace}.profiles`;
 export const SELECTED_PROFILE = `${namespace}.selectedProfile`;
 
-type Profile = {
+export type Profile = {
   id: string;
   name: string;
 };
@@ -55,6 +55,37 @@ export class ProfilesStore {
   selectProfile(profile: Profile) {
     this.selectedProfile = profile;
     localStorage.setItem(SELECTED_PROFILE, JSON.stringify(profile));
+  }
+
+  @action
+  syncProfiles() {
+    const profiles = localStorage.getItem(PROFILES);
+    if (profiles) {
+      this.profiles = JSON.parse(profiles);
+    }
+    const selectedProfile = localStorage.getItem(SELECTED_PROFILE);
+    if (selectedProfile) {
+      this.selectedProfile = JSON.parse(selectedProfile);
+    }
+  }
+
+  @action
+  saveProfiles() {
+    localStorage.setItem(PROFILES, JSON.stringify(this.profiles));
+    localStorage.setItem(
+      SELECTED_PROFILE,
+      JSON.stringify(this.selectedProfile)
+    );
+  }
+
+  @computed
+  get getProfiles() {
+    return this.profiles;
+  }
+
+  @computed
+  get getSelectedProfile() {
+    return this.selectedProfile;
   }
 }
 

@@ -25,6 +25,7 @@
     "ress": "^5.0.2"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.27.1",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.2",
     "@types/react-transition-group": "4.4.5",
