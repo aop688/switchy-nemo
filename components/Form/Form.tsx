@@ -48,7 +48,7 @@ const Form: React.FC<IFormProps> = ({
   useEffect(() => {
     if (updated) {
       const validForm = Object.values(errors).every(error => !error);
-      onValidateChange && onValidateChange(validForm);
+      onValidateChange?.(validForm);
     }
   }, [updated, errors, onValidateChange]);
 
@@ -91,7 +91,7 @@ const Form: React.FC<IFormProps> = ({
       event.preventDefault();
       const valid = await validate();
       if (valid) {
-        onSubmit && onSubmit(event);
+        onSubmit?.(event);
       }
     },
     [onSubmit, validate]

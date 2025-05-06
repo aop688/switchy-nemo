@@ -41,7 +41,7 @@ const Sidebar = observer(() => {
       profiles.addProfile(profile as Profile);
       setShowAddProfile(false);
     }
-  }, [profile]);
+  }, [profile, valid, profiles]);
 
   return (
     <aside className={styles.sidebar}>

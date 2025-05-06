@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export const namespace = 'nimo.local';
 
 export function uuid() {
