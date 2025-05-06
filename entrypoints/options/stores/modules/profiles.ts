@@ -1,4 +1,4 @@
-import { action, computed, observable } from 'mobx';
+import { action, computed, observable, toJS } from 'mobx';
 import { namespace } from '@/utils/misc';
 
 export const PROFILES = `${namespace}.profiles`;
@@ -79,13 +79,13 @@ export class ProfilesStore {
   }
 
   @computed
-  get getProfiles() {
-    return this.profiles;
+  get getProfiles(): Profile[] {
+    return toJS(this.profiles);
   }
 
   @computed
   get getSelectedProfile() {
-    return this.selectedProfile;
+    return toJS(this.selectedProfile);
   }
 }
 

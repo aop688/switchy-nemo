@@ -69,14 +69,13 @@
 
 .addProfile {
   position: absolute;
-  top: 50%;
+  top: 5px;
   right: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 24px;
   height: 24px;
-  transform: translateY(-50%);
   color: var(--color-text-2);
 
   &:hover,

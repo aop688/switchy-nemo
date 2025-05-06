@@ -65,10 +65,20 @@ const Sidebar = observer(() => {
           >
             <Plus className={styles.addIcon} />
           </button>
+          <Menu className={styles.menu}>
+            {profiles.getProfiles.map(profile => (
+              <Menu.MenuItem
+                key={profile.id}
+                label={profile.name}
+                to={`profile/${profile.id}`}
+              />
+            ))}
+          </Menu>
         </nav>
         <Dialog
           visible={showAddProfile}
           title={'New Profile'}
+          onClose={() => setShowAddProfile(false)}
           footer={
             <div className={styles.newProfileFooter}>
               <Button
@@ -95,7 +105,7 @@ const Sidebar = observer(() => {
               showRequired={false}
             >
               <Form.Item label={'Profile name'} field="name">
-                <Input />
+                <Input autoFocus />
               </Form.Item>
             </Form>
           </div>
