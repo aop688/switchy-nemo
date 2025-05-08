@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
-import { Button, Dialog, Table } from '@/components';
+import { Button, Dialog, Table, Link } from '@/components';
 import { Edit } from '@/assets/icons';
+import { BYPASS_LIST } from '@/utils/misc';
 import { useStore } from '@options/stores';
 import styles from './profile.module.css';
 
@@ -10,6 +11,7 @@ const ProfileView = observer(() => {
   const navigate = useNavigate();
   const { profiles } = useStore();
   const [showDeleteProfile, setShowDeleteProfile] = useState(false);
+  const [bypassList, setBypassList] = useState(BYPASS_LIST.join('\n'));
 
   const profile = profiles.getProfileById(id as string);
 
@@ -120,6 +122,26 @@ const ProfileView = observer(() => {
             columns={columns}
             dataSource={dataSource}
             className={styles.sectionTable}
+          />
+        </div>
+      </section>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Bypass List</h2>
+        <div className={styles.sectionBody}>
+          <div className={styles.sectionDescription}>
+            <p>
+              Servers for which you do not want to use any proxy: (One server on
+              each line.)
+            </p>
+            <Link href="https://developer.chrome.com/docs/extensions/reference/api/proxy#bypass_list">
+              (Wildcards and more available…)
+            </Link>
+          </div>
+          <Textarea
+            rows={10}
+            className={styles.sectionTextarea}
+            value={bypassList}
+            onChange={e => setBypassList(e.target.value)}
           />
         </div>
       </section>

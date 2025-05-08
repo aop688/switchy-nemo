@@ -123,3 +123,5 @@ export function deepClone<T>(val: T): T {
     return acc;
   }, {} as T);
 }
+
+export const BYPASS_LIST = ['127.0.0.1', '[::1]', 'localhost'];

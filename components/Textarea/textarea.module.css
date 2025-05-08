@@ -3,7 +3,8 @@
   padding: 4px 8px;
   border-radius: var(--border-radius-xs);
   border: 1px solid var(--color-border-1);
-  color: var(--color-text-0);
+  color: var(--color-text-1);
+  font-size: var(--font-size-lg);
   background-color: var(--color-white);
 
   &:disabled {

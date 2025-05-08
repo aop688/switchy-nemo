@@ -43,18 +43,29 @@
 
 .section {
   padding: 16px 0;
+  font-size: var(--font-size-md);
 
   &Title {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-semi-bold);
   }
 
+  &Description {
+    margin: 8px 0;
+    color: var(--color-text-2);
+  }
+
   &Body {
-    margin: 16px 24px;
+    margin: 8px 24px;
   }
 
   &Table {
     max-width: 800px;
+  }
+
+  &Textarea {
+    max-width: 80%;
+    margin: 8px 0;
   }
 }
 
