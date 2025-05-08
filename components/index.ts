@@ -5,4 +5,5 @@ export type { FormValues, Rules, Rule } from './Form';
 export { default as Input } from './Input';
 export { default as Menu } from './Menu';
 export { default as message } from './message';
+export { default as Table } from './Table';
 export { default as Textarea } from './Textarea';

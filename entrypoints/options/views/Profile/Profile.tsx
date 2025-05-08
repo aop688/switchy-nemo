@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
-import { Button, Dialog } from '@/components';
+import { Button, Dialog, Table } from '@/components';
 import { useStore } from '@options/stores';
 import styles from './profile.module.css';
 
@@ -19,6 +19,46 @@ const ProfileView = observer(() => {
       navigate('/');
     }
   }, [profile, profiles, navigate]);
+
+  const columns = [
+    {
+      name: 'scheme',
+      label: 'Scheme'
+    },
+    {
+      name: 'protocol',
+      label: 'Protocol'
+    },
+    {
+      name: 'server',
+      label: 'Server'
+    },
+    {
+      name: 'port',
+      label: 'Port'
+    }
+  ];
+
+  const dataSource = [
+    {
+      scheme: 'http',
+      protocol: 'HTTP',
+      server: 'example.com',
+      port: 80
+    },
+    {
+      scheme: 'https',
+      protocol: 'HTTPS',
+      server: 'example.com',
+      port: 443
+    },
+    {
+      scheme: 'socks5',
+      protocol: 'SOCKS5',
+      server: 'example.com',
+      port: 1080
+    }
+  ];
 
   return (
     <div className={styles.profile}>
@@ -60,6 +100,13 @@ const ProfileView = observer(() => {
       </header>
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Proxy servers</h2>
+        <div className={styles.sectionBody}>
+          <Table
+            columns={columns}
+            dataSource={dataSource}
+            className={styles.sectionTable}
+          />
+        </div>
       </section>
     </div>
   );

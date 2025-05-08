@@ -48,4 +48,12 @@
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-semi-bold);
   }
+
+  &Body {
+    margin: 16px 24px;
+  }
+
+  &Table {
+    max-width: 800px;
+  }
 }
