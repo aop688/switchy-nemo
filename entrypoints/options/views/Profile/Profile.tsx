@@ -58,6 +58,9 @@ const ProfileView = observer(() => {
           </Dialog>
         </div>
       </header>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Proxy servers</h2>
+      </section>
     </div>
   );
 });
