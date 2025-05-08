@@ -4,6 +4,7 @@ export { default as Settings } from './settings.svg?react';
 export { default as Loading } from './loading.svg?react';
 export { default as Plus } from './plus.svg?react';
 export { default as Close } from './close.svg?react';
+export { default as Edit } from './edit.svg?react';
 export { default as Error } from './error.svg?react';
 export { default as Info } from './info.svg?react';
 export { default as Success } from './success.svg?react';

@@ -57,3 +57,22 @@
     max-width: 800px;
   }
 }
+
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  width: 24px;
+  height: 24px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-tertiary-light-hover);
+  }
+
+  &Icon {
+    width: 16px;
+    height: 16px;
+  }
+}

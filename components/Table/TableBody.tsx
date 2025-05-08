@@ -9,10 +9,10 @@ const TableBody: React.FC<ITableBodyProps> = ({ columns, dataSource }) => {
         return (
           <tr className={styles.bodyRow} key={rowIndex}>
             {columns.map(column => {
-              if (column.render) {
+              if (column.renderCell) {
                 return (
                   <td className={styles.bodyCell} key={column.name}>
-                    {column.render(data[column.name], data, rowIndex)}
+                    {column.renderCell(data[column.name], data, rowIndex)}
                   </td>
                 );
               } else {

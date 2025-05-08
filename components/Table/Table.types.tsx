@@ -2,8 +2,12 @@ export type RecordType = AnyLiteral;
 
 export interface Column {
   name: string;
-  label: string;
-  render?: (text: string, record: RecordType, index: number) => React.ReactNode;
+  label: React.ReactNode;
+  renderCell?: (
+    text: AnyValue,
+    record: RecordType,
+    index: number
+  ) => React.ReactNode;
 }
 
 export interface Scroll {

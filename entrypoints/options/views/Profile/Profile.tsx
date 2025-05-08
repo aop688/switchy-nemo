@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
 import { Button, Dialog, Table } from '@/components';
+import { Edit } from '@/assets/icons';
 import { useStore } from '@options/stores';
 import styles from './profile.module.css';
 
@@ -20,6 +21,11 @@ const ProfileView = observer(() => {
     }
   }, [profile, profiles, navigate]);
 
+  const editServer = useCallback((index: number) => {
+    // todo
+    console.log('edit server', index);
+  }, []);
+
   const columns = [
     {
       name: 'scheme',
@@ -36,6 +42,15 @@ const ProfileView = observer(() => {
     {
       name: 'port',
       label: 'Port'
+    },
+    {
+      name: 'action',
+      label: 'Action',
+      renderCell: (_text: string, _record: AnyLiteral, index: number) => (
+        <button className={styles.editButton} onClick={() => editServer(index)}>
+          <Edit className={styles.editButtonIcon} />
+        </button>
+      )
     }
   ];
 
