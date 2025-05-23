@@ -4,9 +4,21 @@ import { namespace } from '@/utils/misc';
 export const PROFILES = `${namespace}.profiles`;
 export const SELECTED_PROFILE = `${namespace}.selectedProfile`;
 
+export type Scheme = 'http' | 'https' | 'socks4' | 'socks5';
+export type ProxyRules =
+  | 'singleProxy'
+  | 'proxyForHttps'
+  | 'proxyForHttp'
+  | 'proxyForFtp';
+
 export type Profile = {
   id: string;
   name: string;
+  proxyRules: ProxyRules;
+  scheme?: string;
+  host: string;
+  port?: number;
+  bypassList?: string[];
 };
 
 export class ProfilesStore {

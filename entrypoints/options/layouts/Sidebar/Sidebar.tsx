@@ -1,13 +1,15 @@
 import { useState, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
 import { Menu, Form, FormValues, Rules } from '@/components';
 import { useStore, Profile } from '@options/stores';
 import { Settings, Save, Plus } from '@/assets/icons';
-import { uuid } from '@/utils/misc';
+import { uuid, BYPASS_LIST } from '@/utils/misc';
 import styles from './sidebar.module.css';
 
 const Sidebar = observer(() => {
   const { profiles } = useStore();
+  const navigate = useNavigate();
   const [showAddProfile, setShowAddProfile] = useState(false);
   const [profile, setProfile] = useState<FormValues>({
     id: uuid(),
@@ -31,7 +33,12 @@ const Sidebar = observer(() => {
   const addProfile = useCallback(() => {
     setProfile({
       id: uuid(),
-      name: ''
+      name: '',
+      proxyRules: 'singleProxy',
+      host: 'example.com',
+      scheme: 'http',
+      port: 80,
+      bypassList: BYPASS_LIST
     });
     setShowAddProfile(true);
   }, []);
@@ -40,8 +47,9 @@ const Sidebar = observer(() => {
     if (valid) {
       profiles.addProfile(profile as Profile);
       setShowAddProfile(false);
+      navigate(`/profile/${profile.id}`);
     }
-  }, [profile, valid, profiles]);
+  }, [profile, valid, profiles, navigate]);
 
   return (
     <aside className={styles.sidebar}>

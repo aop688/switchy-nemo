@@ -1,9 +1,17 @@
 import { useParams, useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
-import { Button, Dialog, Table, Link } from '@/components';
+import {
+  Button,
+  Dialog,
+  Table,
+  Form,
+  FormValues,
+  Rules,
+  Link
+} from '@/components';
 import { Edit } from '@/assets/icons';
 import { BYPASS_LIST } from '@/utils/misc';
-import { useStore } from '@options/stores';
+import { useStore, Profile } from '@options/stores';
 import styles from './profile.module.css';
 
 const ProfileView = observer(() => {
@@ -11,9 +19,30 @@ const ProfileView = observer(() => {
   const navigate = useNavigate();
   const { profiles } = useStore();
   const [showDeleteProfile, setShowDeleteProfile] = useState(false);
-  const [bypassList, setBypassList] = useState(BYPASS_LIST.join('\n'));
+  const [showEditProfile, setShowEditProfile] = useState(false);
 
   const profile = profiles.getProfileById(id as string);
+
+  const [currentProfile, setCurrentProfile] = useState<FormValues>({});
+
+  const [bypassList, setBypassList] = useState('');
+
+  const [valid, setValid] = useState(true);
+  const profileRules: Rules = {
+    name: [
+      {
+        required: true,
+        message: 'The name of the profile is required.',
+        trigger: ['change', 'blur']
+      }
+    ]
+  };
+  const updateProfile = useCallback(() => {
+    if (valid) {
+      profiles.updateProfile(currentProfile as Profile);
+      setShowEditProfile(false);
+    }
+  }, [valid, currentProfile, profiles]);
 
   const deleteProfile = useCallback(() => {
     if (profile) {
@@ -24,21 +53,21 @@ const ProfileView = observer(() => {
   }, [profile, profiles, navigate]);
 
   const editServer = useCallback((index: number) => {
-    // todo
-    console.log('edit server', index);
+    console.log('Edit server', index);
+    setShowEditProfile(true);
   }, []);
 
   const columns = [
+    {
+      name: 'proxyRules',
+      label: 'Proxy rule'
+    },
     {
       name: 'scheme',
       label: 'Scheme'
     },
     {
-      name: 'protocol',
-      label: 'Protocol'
-    },
-    {
-      name: 'server',
+      name: 'host',
       label: 'Server'
     },
     {
@@ -56,33 +85,28 @@ const ProfileView = observer(() => {
     }
   ];
 
-  const dataSource = [
-    {
-      scheme: 'http',
-      protocol: 'HTTP',
-      server: 'example.com',
-      port: 80
-    },
-    {
-      scheme: 'https',
-      protocol: 'HTTPS',
-      server: 'example.com',
-      port: 443
-    },
-    {
-      scheme: 'socks5',
-      protocol: 'SOCKS5',
-      server: 'example.com',
-      port: 1080
+  useEffect(() => {
+    if (bypassList) {
+      const list = bypassList.split('\n').map(item => item.trim());
+      setCurrentProfile(prevProfile => ({
+        ...prevProfile,
+        bypassList: list.filter(item => item.length > 0)
+      }));
     }
-  ];
+  }, [bypassList]);
+
+  useEffect(() => {
+    if (profile) {
+      setCurrentProfile(profile);
+      setBypassList(profile?.bypassList?.join('\n') || BYPASS_LIST.join('\n'));
+    }
+  }, [profile]);
 
   return (
     <div className={styles.profile}>
       <header className={styles.header}>
         <h1 className={styles.title}>Profile {profile?.name}</h1>
         <div className={styles.actions}>
-          <Button>Save</Button>
           <Button
             variant="filled-danger"
             onClick={() => setShowDeleteProfile(true)}
@@ -120,9 +144,56 @@ const ProfileView = observer(() => {
         <div className={styles.sectionBody}>
           <Table
             columns={columns}
-            dataSource={dataSource}
+            dataSource={[currentProfile]}
             className={styles.sectionTable}
           />
+          <Dialog
+            visible={showEditProfile}
+            title={'Edit Profile'}
+            onClose={() => setShowEditProfile(false)}
+            footer={
+              <div className={styles.editProfileFooter}>
+                <Button
+                  variant="outlined"
+                  onClick={() => setShowEditProfile(false)}
+                >
+                  Close
+                </Button>
+                <Button type="submit" form="editProfile" disabled={!valid}>
+                  Update
+                </Button>
+              </div>
+            }
+          >
+            <div className={styles.editProfile}>
+              <Form
+                values={currentProfile}
+                onValuesChange={setCurrentProfile}
+                onValidateChange={setValid}
+                id="editProfile"
+                rules={profileRules}
+                onSubmit={updateProfile}
+                layout="vertical"
+                showRequired={false}
+              >
+                <Form.Item label={'Profile name'} field="name">
+                  <Input autoFocus />
+                </Form.Item>
+                <Form.Item label={'Proxy rule'} field="proxyRules">
+                  <Input disabled />
+                </Form.Item>
+                <Form.Item label={'Scheme'} field="scheme">
+                  <Input />
+                </Form.Item>
+                <Form.Item label={'Server'} field="host">
+                  <Input />
+                </Form.Item>
+                <Form.Item label={'Port'} field="port">
+                  <Input />
+                </Form.Item>
+              </Form>
+            </div>
+          </Dialog>
         </div>
       </section>
       <section className={styles.section}>

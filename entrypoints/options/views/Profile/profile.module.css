@@ -87,3 +87,14 @@
     height: 16px;
   }
 }
+
+.editProfile {
+  padding: 16px 0;
+
+  &Footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
