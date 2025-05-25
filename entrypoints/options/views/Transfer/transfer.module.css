@@ -13,3 +13,29 @@
 .title {
   font-size: var(--font-size-3xl);
 }
+
+.section {
+  padding: 16px 0;
+  font-size: var(--font-size-md);
+
+  &Title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semi-bold);
+  }
+
+  &Body {
+    margin: 8px 24px;
+  }
+
+  &Item {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &Description {
+      color: var(--color-text-1);
+      font-size: var(--font-size-md);
+    }
+  }
+}
