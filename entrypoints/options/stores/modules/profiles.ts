@@ -15,7 +15,7 @@ export type Profile = {
   id: string;
   name: string;
   proxyRules: ProxyRules;
-  scheme?: string;
+  scheme?: Scheme;
   host: string;
   port?: number;
   bypassList?: string[];

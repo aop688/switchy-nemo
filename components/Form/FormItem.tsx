@@ -15,7 +15,7 @@ import { getProp, setProp } from './utils';
 import Input from '../Input';
 // import Radio, { RadioValueType } from '../Radio';
 // import Checkbox, { CheckboxValueType } from '../Checkbox';
-// import Select, { SelectValueType } from '../Select';
+import Select, { SelectValueType } from '../Select';
 import Textarea from '../Textarea';
 import {
   IFormItemProps,
@@ -29,7 +29,8 @@ type ChildProps = {
   invalid: boolean;
   disabled: boolean;
   id: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSelect?: (value: SelectValueType) => void;
 };
 
 const FormItem = forwardRef<IFormItemRef, IFormItemProps>((props, ref) => {
@@ -210,15 +211,15 @@ const FormItem = forwardRef<IFormItemRef, IFormItemProps>((props, ref) => {
   //   },
   //   [values, field, changeHandler]
   // );
-  // const selectHandler = useCallback(
-  //   (value: SelectValueType) => {
-  //     if (field) {
-  //       const newValues = setProp(values, field, value);
-  //       changeHandler(newValues);
-  //     }
-  //   },
-  //   [values, field, changeHandler]
-  // );
+  const selectHandler = useCallback(
+    (value: SelectValueType) => {
+      if (field) {
+        const newValues = setProp(values, field, value);
+        changeHandler(newValues);
+      }
+    },
+    [values, field, changeHandler]
+  );
 
   const blurHandler = useCallback(() => {
     validate('blur');
@@ -263,14 +264,15 @@ const FormItem = forwardRef<IFormItemRef, IFormItemProps>((props, ref) => {
         //     onChange: checkboxChangeHandler
         //   });
         // }
-        // case Select: {
-        //   return React.cloneElement(children as React.ReactElement, {
-        //     value: fieldValue,
-        //     invalid: !!errorMessage,
-        //     disabled: disableState || children.props.disabled,
-        //     onSelect: selectHandler
-        //   });
-        // }
+        case Select: {
+          const child = children as React.ReactElement<ChildProps>;
+          return React.cloneElement(child as React.ReactElement<ChildProps>, {
+            value: fieldValue,
+            invalid: !!errorMessage,
+            disabled: disableState || child.props.disabled,
+            onSelect: selectHandler
+          });
+        }
         default: {
           return children;
         }
@@ -284,7 +286,8 @@ const FormItem = forwardRef<IFormItemRef, IFormItemProps>((props, ref) => {
     fieldValue,
     errorMessage,
     field,
-    disableState
+    disableState,
+    selectHandler
   ]);
   return (
     <div

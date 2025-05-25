@@ -7,7 +7,8 @@ import {
   Form,
   FormValues,
   Rules,
-  Link
+  Link,
+  Select
 } from '@/components';
 import { Edit } from '@/assets/icons';
 import { BYPASS_LIST } from '@/utils/misc';
@@ -28,6 +29,13 @@ const ProfileView = observer(() => {
   const [bypassList, setBypassList] = useState('');
 
   const [valid, setValid] = useState(true);
+
+  const schemeOptions = [
+    { label: 'HTTP', value: 'http' },
+    { label: 'HTTPS', value: 'https' },
+    { label: 'SOCKS4', value: 'socks4' },
+    { label: 'SOCKS5', value: 'socks5' }
+  ];
   const profileRules: Rules = {
     name: [
       {
@@ -64,7 +72,11 @@ const ProfileView = observer(() => {
     },
     {
       name: 'scheme',
-      label: 'Scheme'
+      label: 'Scheme',
+      renderCell: (text: string) => {
+        const option = schemeOptions.find(opt => opt.value === text);
+        return option ? option.label : text;
+      }
     },
     {
       name: 'host',
@@ -183,7 +195,7 @@ const ProfileView = observer(() => {
                   <Input disabled />
                 </Form.Item>
                 <Form.Item label={'Scheme'} field="scheme">
-                  <Input />
+                  <Select options={schemeOptions} />
                 </Form.Item>
                 <Form.Item label={'Server'} field="host">
                   <Input />
