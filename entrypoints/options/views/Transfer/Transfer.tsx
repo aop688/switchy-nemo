@@ -1,7 +1,15 @@
 import { Button } from '@/components';
+import { useStore } from '@options/stores';
+import { downloadFile } from '@/utils/misc';
 import styles from './transfer.module.css';
 
 const TransferView = () => {
+  const { profiles } = useStore();
+
+  const backupSettings = useCallback(() => {
+    const data = profiles.exportProfiles();
+    downloadFile('switchy-nemo-options.bak', data);
+  }, [profiles]);
   return (
     <div className={styles.transfer}>
       <header className={styles.header}>
@@ -11,7 +19,7 @@ const TransferView = () => {
         <h2 className={styles.sectionTitle}>Settings</h2>
         <div className={styles.sectionBody}>
           <div className={styles.sectionItem}>
-            <Button>Backup Settings</Button>
+            <Button onClick={backupSettings}>Backup Settings</Button>
             <p className={styles.sectionItemDescription}>
               Make a full backup of your options (including profiles and all
               other options).

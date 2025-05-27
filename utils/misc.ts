@@ -125,3 +125,15 @@ export function deepClone<T>(val: T): T {
 }
 
 export const BYPASS_LIST = ['127.0.0.1', '[::1]', 'localhost'];
+
+export const downloadFile = (filename: string, content: string) => {
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};

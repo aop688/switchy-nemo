@@ -96,6 +96,11 @@ export class ProfilesStore {
     );
   }
 
+  @action
+  exportProfiles(): string {
+    return JSON.stringify(this.profiles, null, 2);
+  }
+
   @computed
   get getProfiles(): Profile[] {
     return toJS(this.profiles);
