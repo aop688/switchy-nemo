@@ -34,6 +34,7 @@ const Sidebar = observer(() => {
     setProfile({
       id: uuid(),
       name: '',
+      enabled: true,
       proxyRules: 'singleProxy',
       host: 'example.com',
       scheme: 'http',

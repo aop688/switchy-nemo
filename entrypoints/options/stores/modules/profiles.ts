@@ -14,6 +14,7 @@ export type ProxyRules =
 export type Profile = {
   id: string;
   name: string;
+  enabled: boolean;
   proxyRules: ProxyRules;
   scheme?: Scheme;
   host: string;

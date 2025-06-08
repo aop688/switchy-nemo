@@ -1,0 +1,41 @@
+.switch {
+  appearance: none;
+  position: relative;
+  display: inline-flex;
+  width: 32px;
+  height: 16px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-bg-2);
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-hover);
+    outline-offset: 2px;
+  }
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    transform: translate3d(0, -50%, 0);
+    content: '';
+    border-radius: var(--border-radius-circle);
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-bg-0);
+    transition: left 0.3s ease-in-out;
+  }
+
+  &:checked {
+    background-color: var(--color-primary);
+    &::before {
+      left: 18px;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

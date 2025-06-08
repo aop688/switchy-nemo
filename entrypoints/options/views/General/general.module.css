@@ -32,3 +32,21 @@
     margin: 8px 24px;
   }
 }
+
+.profiles {
+  max-width: 800px;
+}
+
+.profile {
+  &Item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &Name {
+    font-size: var(--font-size-lg);
+    cursor: grab;
+  }
+}

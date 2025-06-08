@@ -8,6 +8,7 @@ export { default as List } from './List';
 export { default as Menu } from './Menu';
 export { default as message } from './message';
 export { default as Select } from './Select';
+export { default as Switch } from './Switch';
 export { default as Table } from './Table';
 export { default as Textarea } from './Textarea';
 export { default as Upload } from './Upload';
