@@ -14,13 +14,21 @@
   font-size: var(--font-size-3xl);
 }
 
-.actions {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.dialog {
+.section {
   padding: 16px 0;
-  margin-bottom: 24px;
+  font-size: var(--font-size-md);
+
+  &Title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semi-bold);
+  }
+
+  &Description {
+    margin: 8px 0;
+    color: var(--color-text-2);
+  }
+
+  &Body {
+    margin: 8px 24px;
+  }
 }

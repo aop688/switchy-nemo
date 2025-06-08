@@ -1,0 +1,31 @@
+.list {
+  width: 100%;
+
+  &Inner {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    border: 1px solid var(--color-border-1);
+    overflow: auto;
+
+    &:empty {
+      visibility: hidden;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: 100%;
+  padding: 8px 16px;
+  min-height: 40px;
+  font-size: var(--font-size-md);
+  border-bottom: 1px solid var(--color-border-1);
+  background-color: var(--color-bg-0);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
