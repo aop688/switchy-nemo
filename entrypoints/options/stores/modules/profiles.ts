@@ -3,6 +3,7 @@ import { namespace } from '@/utils/misc';
 
 export const PROFILES = `${namespace}.profiles`;
 export const SELECTED_PROFILE = `${namespace}.selectedProfile`;
+export const PROXY_MODE = `${namespace}.proxyMode`;
 
 export type Scheme = 'http' | 'https' | 'socks4' | 'socks5';
 export type ProxyRules =
@@ -10,6 +11,14 @@ export type ProxyRules =
   | 'proxyForHttps'
   | 'proxyForHttp'
   | 'proxyForFtp';
+
+export const ProxyMode = {
+  Direct: 'direct',
+  SystemProxy: 'system',
+  FixedServers: 'fixed_servers'
+} as const;
+
+export type ProxyMode = (typeof ProxyMode)[keyof typeof ProxyMode];
 
 export type Profile = {
   id: string;
@@ -31,11 +40,20 @@ export class ProfilesStore {
   )
     ? JSON.parse(localStorage.getItem(SELECTED_PROFILE) || '')
     : null;
+  @observable accessor currentMode: ProxyMode = localStorage.getItem(PROXY_MODE)
+    ? (localStorage.getItem(PROXY_MODE) as ProxyMode)
+    : 'direct';
 
   @action
   setProfiles(profiles: Profile[]) {
     this.profiles = profiles;
     localStorage.setItem(PROFILES, JSON.stringify(profiles));
+  }
+
+  @action
+  setCurrentMode(mode: ProxyMode) {
+    this.currentMode = mode;
+    localStorage.setItem(PROXY_MODE, mode);
   }
 
   @action
@@ -71,7 +89,10 @@ export class ProfilesStore {
   }
 
   @action
-  selectProfile(profile: Profile) {
+  selectProfile(profile: Profile | null) {
+    if (profile) {
+      this.setCurrentMode(ProxyMode.FixedServers);
+    }
     this.selectedProfile = profile;
     localStorage.setItem(SELECTED_PROFILE, JSON.stringify(profile));
   }
@@ -110,6 +131,11 @@ export class ProfilesStore {
   @computed
   get getSelectedProfile() {
     return toJS(this.selectedProfile);
+  }
+
+  @computed
+  get availableProfiles(): Profile[] {
+    return this.profiles.filter(profile => profile.enabled);
   }
 }
 
