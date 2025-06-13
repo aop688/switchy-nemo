@@ -22,7 +22,7 @@ export default defineConfig({
       name: '__MSG_appName__',
       description: '__MSG_description__',
       default_locale: 'en',
-      permissions: ['activeTab', 'storage'],
+      permissions: ['activeTab', 'storage', 'proxy', 'webRequest'],
       web_accessible_resources: [],
       action: {
         default_icon: {

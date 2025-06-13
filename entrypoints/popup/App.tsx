@@ -1,7 +1,9 @@
+import { useCallback } from 'react';
 import cls from 'clsx';
 import { observer } from 'mobx-react-lite';
 import { profiles } from '@options/stores';
 import { Profile, ProxyMode } from '@options/stores/modules/profiles';
+import { Message } from '@/entrypoints/background';
 import styles from './app.module.css';
 
 const modeOptions = [
@@ -10,24 +12,48 @@ const modeOptions = [
 ];
 
 const App = observer(() => {
-  const selectMode = useCallback((mode: ProxyMode) => {
-    profiles.setCurrentMode(mode);
-    profiles.selectProfile(null);
-    browser.runtime.sendMessage({
-      type: 'setProxy',
-      currentMode: mode,
-      selectedProfile: null
+  const sendMessage = useCallback((message: Message) => {
+    browser.runtime.sendMessage(message).then(response => {
+      if (response?.success) {
+        browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
+          if (tabs.length > 0) {
+            const tabId = tabs[0].id;
+            if (tabId) {
+              browser.tabs.reload(tabId);
+            }
+          }
+        });
+        window.close();
+      }
     });
   }, []);
 
-  const selectProfile = useCallback((profile: Profile) => {
-    profiles.selectProfile(profile);
-    browser.runtime.sendMessage({
-      type: 'setProxy',
-      currentMode: ProxyMode.FixedServers,
-      selectedProfile: profile
-    });
-  }, []);
+  const selectMode = useCallback(
+    (mode: ProxyMode) => {
+      profiles.setCurrentMode(mode);
+      profiles.selectProfile(null);
+
+      sendMessage({
+        type: 'setProxy',
+        currentMode: mode,
+        selectedProfile: null
+      });
+    },
+    [sendMessage]
+  );
+
+  const selectProfile = useCallback(
+    (profile: Profile) => {
+      profiles.selectProfile(profile);
+
+      sendMessage({
+        type: 'setProxy',
+        currentMode: ProxyMode.FixedServers,
+        selectedProfile: profile
+      });
+    },
+    [sendMessage]
+  );
 
   return (
     <div className={styles.options}>
