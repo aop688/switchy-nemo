@@ -1,7 +1,7 @@
 import cls from 'clsx';
 import { observer } from 'mobx-react-lite';
 import { profiles } from '@options/stores';
-import { ProxyMode } from '@options/stores/modules/profiles';
+import { Profile, ProxyMode } from '@options/stores/modules/profiles';
 import styles from './app.module.css';
 
 const modeOptions = [
@@ -13,6 +13,20 @@ const App = observer(() => {
   const selectMode = useCallback((mode: ProxyMode) => {
     profiles.setCurrentMode(mode);
     profiles.selectProfile(null);
+    browser.runtime.sendMessage({
+      type: 'setProxy',
+      currentMode: mode,
+      selectedProfile: null
+    });
+  }, []);
+
+  const selectProfile = useCallback((profile: Profile) => {
+    profiles.selectProfile(profile);
+    browser.runtime.sendMessage({
+      type: 'setProxy',
+      currentMode: ProxyMode.FixedServers,
+      selectedProfile: profile
+    });
   }, []);
 
   return (
@@ -37,7 +51,7 @@ const App = observer(() => {
             styles.optionsItem,
             profile.id === profiles.getSelectedProfile?.id && styles.selected
           )}
-          onClick={() => profiles.selectProfile(profile)}
+          onClick={() => selectProfile(profile)}
         >
           {profile.name}
         </button>
