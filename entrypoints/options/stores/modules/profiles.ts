@@ -23,6 +23,7 @@ export type ProxyMode = (typeof ProxyMode)[keyof typeof ProxyMode];
 export type Profile = {
   id: string;
   name: string;
+  color: string;
   enabled: boolean;
   proxyRules: ProxyRules;
   scheme?: Scheme;

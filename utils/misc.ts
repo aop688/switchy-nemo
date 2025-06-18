@@ -137,3 +137,9 @@ export const downloadFile = (filename: string, content: string) => {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 };
+
+export const getColor = () => {
+  const MAX_COLOR_VALUE = 0xffffff;
+  const randomColor = Math.floor(Math.random() * MAX_COLOR_VALUE).toString(16);
+  return `#${randomColor.padStart(6, '0')}`;
+};

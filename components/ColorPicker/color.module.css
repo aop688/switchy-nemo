@@ -1,0 +1,15 @@
+.colorPicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  &::-webkit-color-swatch {
+    border-radius: 4px;
+    border: none;
+  }
+}

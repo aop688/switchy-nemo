@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
 import {
   Button,
+  ColorPicker,
   Dialog,
   Table,
   Form,
@@ -21,7 +22,6 @@ const ProfileView = observer(() => {
   const { profiles } = useStore();
   const [showDeleteProfile, setShowDeleteProfile] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
-
   const profile = profiles.getProfileById(id as string);
 
   const [currentProfile, setCurrentProfile] = useState<FormValues>({});
@@ -51,6 +51,21 @@ const ProfileView = observer(() => {
       setShowEditProfile(false);
     }
   }, [valid, currentProfile, profiles]);
+
+  const updateProfileColor = useCallback(
+    (color: string) => {
+      setCurrentProfile(prevProfile => ({
+        ...prevProfile,
+        color
+      }));
+
+      profiles.updateProfile({
+        ...currentProfile,
+        color
+      } as Profile);
+    },
+    [currentProfile, profiles]
+  );
 
   const deleteProfile = useCallback(() => {
     if (profile) {
@@ -117,7 +132,14 @@ const ProfileView = observer(() => {
   return (
     <div className={styles.profile}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Profile {profile?.name}</h1>
+        <div className={styles.headerTitle}>
+          <ColorPicker
+            color={currentProfile.color}
+            onChange={updateProfileColor}
+            className={styles.colorPicker}
+          />
+          <h1 className={styles.title}>Profile {profile?.name}</h1>
+        </div>
         <div className={styles.actions}>
           <Button
             variant="filled-danger"

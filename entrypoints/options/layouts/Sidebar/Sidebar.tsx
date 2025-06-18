@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { Menu, Form, FormValues, Rules } from '@/components';
 import { useStore, Profile } from '@options/stores';
 import { Settings, Save, Plus } from '@/assets/icons';
-import { uuid, BYPASS_LIST } from '@/utils/misc';
+import { uuid, BYPASS_LIST, getColor } from '@/utils/misc';
 import styles from './sidebar.module.css';
 
 const Sidebar = observer(() => {
@@ -34,6 +34,7 @@ const Sidebar = observer(() => {
     setProfile({
       id: uuid(),
       name: '',
+      color: getColor(),
       enabled: true,
       proxyRules: 'singleProxy',
       host: 'example.com',

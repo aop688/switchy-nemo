@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as ColorPicker } from './ColorPicker';
 export { default as Dialog } from './Dialog';
 export { default as Form } from './Form';
 export type { FormValues, Rules, Rule } from './Form';

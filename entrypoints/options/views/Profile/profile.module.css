@@ -8,6 +8,17 @@
   align-items: center;
   height: var(--height-header);
   border-bottom: 1px solid var(--color-border-1);
+
+  &Title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.colorPicker {
+  inline-size: 36px;
+  block-size: 36px;
 }
 
 .title {
