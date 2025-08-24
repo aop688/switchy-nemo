@@ -2,14 +2,32 @@ import { useCallback } from 'react';
 import cls from 'clsx';
 import { observer } from 'mobx-react-lite';
 import { profiles } from '@options/stores';
+import profileIcon from '@/assets/nemo.svg';
 import { Profile, ProxyMode } from '@options/stores/modules/profiles';
 import { Message } from '@/entrypoints/background';
 import styles from './app.module.css';
 
 const modeOptions = [
-  { label: 'Direct', value: ProxyMode.Direct },
-  { label: 'System Proxy', value: ProxyMode.SystemProxy }
+  { label: 'Direct', value: ProxyMode.Direct, color: '#818D7C' },
+  { label: 'System Proxy', value: ProxyMode.SystemProxy, color: '#000000' }
 ];
+
+function setIcon(id: string) {
+  const img = document.getElementById(id) as HTMLImageElement;
+  if (img) {
+    const canvas = new OffscreenCanvas(128, 128);
+    const context = canvas.getContext('2d');
+    if (context) {
+      context.clearRect(0, 0, 128, 128);
+      const transparent = 'rgba(0, 0, 0, 0)';
+      context.fillStyle = transparent;
+      context.fillRect(0, 0, 128, 128);
+      context.drawImage(img, 0, 0, 128, 128);
+      const imageData = context.getImageData(0, 0, 128, 128);
+      browser.action.setIcon({ imageData: imageData });
+    }
+  }
+}
 
 const App = observer(() => {
   const sendMessage = useCallback((message: Message) => {
@@ -38,6 +56,8 @@ const App = observer(() => {
         currentMode: mode,
         selectedProfile: null
       });
+
+      setIcon(mode);
     },
     [sendMessage]
   );
@@ -51,6 +71,8 @@ const App = observer(() => {
         currentMode: ProxyMode.FixedServers,
         selectedProfile: profile
       });
+
+      setIcon(profile.id);
     },
     [sendMessage]
   );
@@ -66,7 +88,17 @@ const App = observer(() => {
           )}
           onClick={() => selectMode(option.value)}
         >
-          {option.label}
+          <img
+            src={profileIcon.replace(
+              /currentColor/g,
+              encodeURIComponent(option.color)
+            )}
+            alt="Mode Icon"
+            width="24"
+            height="24"
+            id={option.value}
+          />
+          <span>{option.label}</span>
         </button>
       ))}
       <hr className={styles.divider} />
@@ -79,7 +111,17 @@ const App = observer(() => {
           )}
           onClick={() => selectProfile(profile)}
         >
-          {profile.name}
+          <img
+            src={profileIcon.replace(
+              /currentColor/g,
+              encodeURIComponent(profile.color)
+            )}
+            alt="Profile Icon"
+            width="24"
+            height="24"
+            id={profile.id}
+          />
+          <span>{profile.name}</span>
         </button>
       ))}
       <hr className={styles.divider} />

@@ -26,11 +26,11 @@ export default defineConfig({
       web_accessible_resources: [],
       action: {
         default_icon: {
-          '16': 'icon/16.png',
-          '32': 'icon/32.png',
-          '48': 'icon/48.png',
-          '96': 'icon/96.png',
-          '128': 'icon/128.png'
+          '16': 'icon/nemo16.png',
+          '32': 'icon/nemo32.png',
+          '48': 'icon/nemo48.png',
+          '96': 'icon/nemo96.png',
+          '128': 'icon/nemo128.png'
         }
       },
       host_permissions: ['https://*/*', 'http://*/*']
