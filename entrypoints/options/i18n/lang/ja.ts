@@ -1,9 +1,12 @@
 export default {
   common: {
     title: 'Switchy Nemo',
+    action: 'アクション',
     close: '閉じる',
     create: '作成',
-    delete: '削除'
+    delete: '削除',
+    cancel: 'キャンセル',
+    update: '更新'
   },
   layouts: {
     sidebar: {
@@ -31,7 +34,18 @@ export default {
     profile: {
       title: 'プロファイル {{name}}',
       new: '新しいプロファイル',
-      name: 'プロファイル名'
+      edit: 'プロファイルを編集',
+      delete: 'プロファイルを削除',
+      deleteConfirmation: '本当に以下のプロファイルを削除しますか？',
+      servers: 'プロキシサーバー',
+      name: 'プロファイル名',
+      proxyRules: 'プロキシルール',
+      scheme: 'スキーム',
+      host: 'サーバー',
+      port: 'ポート',
+      bypassList: 'バイパスリスト',
+      bypassListDesc: 'プロキシを使用したくないサーバー: (各行に1つのサーバー)',
+      bypassListLink: '(ワイルドカードなどが利用可能です…)'
     }
   },
   validation: {

@@ -1,9 +1,12 @@
 export default {
   common: {
     title: 'Switchy Nemo',
+    action: '操作',
     close: '关闭',
     create: '创建',
-    delete: '删除'
+    delete: '删除',
+    cancel: '取消',
+    update: '更新'
   },
   layouts: {
     sidebar: {
@@ -30,7 +33,18 @@ export default {
     profile: {
       title: '模式 {{name}}',
       new: '新建模式',
-      name: '模式名称'
+      edit: '编辑模式',
+      delete: '删除模式',
+      deleteConfirmation: '您真的想删除以下模式吗？',
+      servers: '代理服务器',
+      name: '模式名称',
+      proxyRules: '代理规则',
+      scheme: '协议',
+      host: '服务器',
+      port: '端口',
+      bypassList: '绕过列表',
+      bypassListDesc: '不想使用代理的服务器: (每行一个服务器)',
+      bypassListLink: '(支持通配符等…)'
     }
   },
   validation: {

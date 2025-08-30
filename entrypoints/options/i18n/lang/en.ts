@@ -1,9 +1,12 @@
 export default {
   common: {
     title: 'Switchy Nemo',
+    action: 'Action',
     close: 'Close',
     create: 'Create',
-    delete: 'Delete'
+    delete: 'Delete',
+    cancel: 'Cancel',
+    update: 'Update'
   },
   layouts: {
     sidebar: {
@@ -31,7 +34,19 @@ export default {
     profile: {
       title: 'Profile {{name}}',
       new: 'New Profile',
-      name: 'Profile name'
+      edit: 'Edit Profile',
+      delete: 'Delete Profile',
+      deleteConfirmation: 'Do you really want to delete the following profile?',
+      servers: 'Proxy servers',
+      name: 'Profile name',
+      proxyRules: 'Proxy rules',
+      scheme: 'Scheme',
+      host: 'Server',
+      port: 'Port',
+      bypassList: 'Bypass List',
+      bypassListDesc:
+        'Servers for which you do not want to use any proxy: (One server on each line.)',
+      bypassListLink: '(Wildcards and more available…)'
     }
   },
   validation: {

@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import {
   Button,
@@ -18,6 +19,7 @@ import styles from './profile.module.css';
 
 const ProfileView = observer(() => {
   const { id } = useParams();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { profiles } = useStore();
   const [showDeleteProfile, setShowDeleteProfile] = useState(false);
@@ -83,11 +85,11 @@ const ProfileView = observer(() => {
   const columns = [
     {
       name: 'proxyRules',
-      label: 'Proxy rule'
+      label: t('views.profile.proxyRules')
     },
     {
       name: 'scheme',
-      label: 'Scheme',
+      label: t('views.profile.scheme'),
       renderCell: (text: string) => {
         const option = schemeOptions.find(opt => opt.value === text);
         return option ? option.label : text;
@@ -95,15 +97,15 @@ const ProfileView = observer(() => {
     },
     {
       name: 'host',
-      label: 'Server'
+      label: t('views.profile.host')
     },
     {
       name: 'port',
-      label: 'Port'
+      label: t('views.profile.port')
     },
     {
       name: 'action',
-      label: 'Action',
+      label: t('common.action'),
       renderCell: (_text: string, _record: AnyLiteral, index: number) => (
         <button className={styles.editButton} onClick={() => editServer(index)}>
           <Edit className={styles.editButtonIcon} />
@@ -138,18 +140,22 @@ const ProfileView = observer(() => {
             onChange={updateProfileColor}
             className={styles.colorPicker}
           />
-          <h1 className={styles.title}>Profile {profile?.name}</h1>
+          <h1 className={styles.title}>
+            {t('views.profile.title', {
+              name: profile?.name
+            })}
+          </h1>
         </div>
         <div className={styles.actions}>
           <Button
             variant="filled-danger"
             onClick={() => setShowDeleteProfile(true)}
           >
-            Delete
+            {t('common.delete')}
           </Button>
           <Dialog
             visible={showDeleteProfile}
-            title={'Delete Profile'}
+            title={t('views.profile.delete')}
             closable
             onClose={() => setShowDeleteProfile(false)}
             footer={
@@ -158,23 +164,23 @@ const ProfileView = observer(() => {
                   variant="outlined"
                   onClick={() => setShowDeleteProfile(false)}
                 >
-                  Cancel
+                  {t('common.cancel')}
                 </Button>
                 <Button variant="filled-danger" onClick={deleteProfile}>
-                  Delete
+                  {t('common.delete')}
                 </Button>
               </div>
             }
           >
             <div className={styles.deleteProfile}>
-              <p>Do you really want to delete the following profile?</p>
+              <p>{t('views.profile.deleteConfirmation')}</p>
               <p className={styles.deleteProfileName}>{profile?.name}</p>
             </div>
           </Dialog>
         </div>
       </header>
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Proxy servers</h2>
+        <h2 className={styles.sectionTitle}>{t('views.profile.servers')}</h2>
         <div className={styles.sectionBody}>
           <Table
             columns={columns}
@@ -183,7 +189,7 @@ const ProfileView = observer(() => {
           />
           <Dialog
             visible={showEditProfile}
-            title={'Edit Profile'}
+            title={t('views.profile.edit')}
             onClose={() => setShowEditProfile(false)}
             footer={
               <div className={styles.editProfileFooter}>
@@ -191,10 +197,10 @@ const ProfileView = observer(() => {
                   variant="outlined"
                   onClick={() => setShowEditProfile(false)}
                 >
-                  Close
+                  {t('common.close')}
                 </Button>
                 <Button type="submit" form="editProfile" disabled={!valid}>
-                  Update
+                  {t('common.update')}
                 </Button>
               </div>
             }
@@ -210,19 +216,22 @@ const ProfileView = observer(() => {
                 layout="vertical"
                 showRequired={false}
               >
-                <Form.Item label={'Profile name'} field="name">
+                <Form.Item label={t('views.profile.name')} field="name">
                   <Input autoFocus />
                 </Form.Item>
-                <Form.Item label={'Proxy rule'} field="proxyRules">
+                <Form.Item
+                  label={t('views.profile.proxyRules')}
+                  field="proxyRules"
+                >
                   <Input disabled />
                 </Form.Item>
-                <Form.Item label={'Scheme'} field="scheme">
+                <Form.Item label={t('views.profile.scheme')} field="scheme">
                   <Select options={schemeOptions} />
                 </Form.Item>
-                <Form.Item label={'Server'} field="host">
+                <Form.Item label={t('views.profile.host')} field="host">
                   <Input />
                 </Form.Item>
-                <Form.Item label={'Port'} field="port">
+                <Form.Item label={t('views.profile.port')} field="port">
                   <Input />
                 </Form.Item>
               </Form>
@@ -231,15 +240,12 @@ const ProfileView = observer(() => {
         </div>
       </section>
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Bypass List</h2>
+        <h2 className={styles.sectionTitle}>{t('views.profile.bypassList')}</h2>
         <div className={styles.sectionBody}>
           <div className={styles.sectionDescription}>
-            <p>
-              Servers for which you do not want to use any proxy: (One server on
-              each line.)
-            </p>
+            <p>{t('views.profile.bypassListDesc')}</p>
             <Link href="https://developer.chrome.com/docs/extensions/reference/api/proxy#bypass_list">
-              (Wildcards and more available…)
+              {t('views.profile.bypassListLink')}
             </Link>
           </div>
           <Textarea
