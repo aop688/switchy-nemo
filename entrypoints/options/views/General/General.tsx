@@ -13,7 +13,7 @@ const langOptions = [
 
 const GeneralView = observer(() => {
   const { profiles } = useStore();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const renderItem = useCallback(
     (profile: Profile) => {
@@ -40,16 +40,13 @@ const GeneralView = observer(() => {
   return (
     <div className={styles.general}>
       <header className={styles.header}>
-        <h1 className={styles.title}>General</h1>
+        <h1 className={styles.title}>{t('views.general.title')}</h1>
       </header>
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Profiles</h2>
+        <h2 className={styles.sectionTitle}>{t('views.general.profiles')}</h2>
         <div className={styles.sectionBody}>
           <div className={styles.sectionDescription}>
-            <p>
-              Profiles are used to manage different proxy servers. You can sort
-              and disable profiles.
-            </p>
+            <p>{t('views.general.profilesDesc')}</p>
           </div>
           <div className={styles.profiles}>
             <List
@@ -62,7 +59,7 @@ const GeneralView = observer(() => {
         </div>
       </section>
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Languages</h2>
+        <h2 className={styles.sectionTitle}>{t('views.general.languages')}</h2>
         <div className={styles.sectionBody}>
           <div className={styles.languageSelect}>
             <Select

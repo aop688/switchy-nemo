@@ -1,6 +1,9 @@
 export default {
   common: {
-    title: 'Switchy Nemo'
+    title: 'Switchy Nemo',
+    close: '閉じる',
+    create: '作成',
+    delete: '削除'
   },
   layouts: {
     sidebar: {
@@ -12,6 +15,8 @@ export default {
     general: {
       title: '一般',
       profiles: 'プロファイル',
+      profilesDesc:
+        'プロファイルは異なるプロキシサーバーを管理するために使用されます。プロファイルを並べ替えたり、無効にしたりできます。',
       languages: '言語'
     },
     transfer: {

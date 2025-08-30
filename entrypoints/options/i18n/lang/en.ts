@@ -1,6 +1,9 @@
 export default {
   common: {
-    title: 'Switchy Nemo'
+    title: 'Switchy Nemo',
+    close: 'Close',
+    create: 'Create',
+    delete: 'Delete'
   },
   layouts: {
     sidebar: {
@@ -12,6 +15,8 @@ export default {
     general: {
       title: 'General',
       profiles: 'Profiles',
+      profilesDesc:
+        'Profiles are used to manage different proxy servers. You can sort and disable profiles.',
       languages: 'Languages'
     },
     transfer: {

@@ -107,10 +107,10 @@ const Sidebar = observer(() => {
                 variant="outlined"
                 onClick={() => setShowAddProfile(false)}
               >
-                Close
+                {t('common.close')}
               </Button>
               <Button type="submit" form="addProfile" disabled={!valid}>
-                Create
+                {t('common.create')}
               </Button>
             </div>
           }

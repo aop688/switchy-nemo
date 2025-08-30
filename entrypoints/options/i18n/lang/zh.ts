@@ -1,6 +1,9 @@
 export default {
   common: {
-    title: 'Switchy Nemo'
+    title: 'Switchy Nemo',
+    close: '关闭',
+    create: '创建',
+    delete: '删除'
   },
   layouts: {
     sidebar: {
@@ -12,6 +15,8 @@ export default {
     general: {
       title: '通用',
       profiles: '模式',
+      profilesDesc:
+        '模式用于管理不同的代理服务器。您可以对模式进行排序和禁用。',
       languages: '语言'
     },
     transfer: {
