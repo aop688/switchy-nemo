@@ -50,3 +50,6 @@
     cursor: grab;
   }
 }
+.languageSelect {
+  max-width: 400px;
+}

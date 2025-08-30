@@ -1,10 +1,19 @@
 import { observer } from 'mobx-react-lite';
-import { Switch, List } from '@/components';
+import { useTranslation } from 'react-i18next';
+import { Switch, List, Select } from '@/components';
 import { useStore, Profile } from '@options/stores';
+import { setLocale } from '@options/i18n';
 import styles from './general.module.css';
+
+const langOptions = [
+  { label: 'English', value: 'en' },
+  { label: '日本語', value: 'ja' },
+  { label: '简体中文', value: 'zh' }
+];
 
 const GeneralView = observer(() => {
   const { profiles } = useStore();
+  const { i18n } = useTranslation();
 
   const renderItem = useCallback(
     (profile: Profile) => {
@@ -48,6 +57,18 @@ const GeneralView = observer(() => {
               setList={profiles.setProfiles.bind(profiles)}
               renderItem={renderItem}
               draggable
+            />
+          </div>
+        </div>
+      </section>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Languages</h2>
+        <div className={styles.sectionBody}>
+          <div className={styles.languageSelect}>
+            <Select
+              options={langOptions}
+              value={i18n.language}
+              onSelect={value => setLocale(value)}
             />
           </div>
         </div>

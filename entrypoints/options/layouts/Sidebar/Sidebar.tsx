@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 import { Menu, Form, FormValues, Rules } from '@/components';
 import { useStore, Profile } from '@options/stores';
 import { Settings, Save, Plus } from '@/assets/icons';
@@ -9,6 +10,7 @@ import styles from './sidebar.module.css';
 
 const Sidebar = observer(() => {
   const { profiles } = useStore();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [showAddProfile, setShowAddProfile] = useState(false);
   const [profile, setProfile] = useState<FormValues>({
@@ -57,17 +59,25 @@ const Sidebar = observer(() => {
     <aside className={styles.sidebar}>
       <div className={styles.inner}>
         <div className={styles.logo}>
-          <h1 className={styles.logoTitle}>Switchy Nemo</h1>
+          <h1 className={styles.logoTitle}>{t('common.title')}</h1>
         </div>
         <nav className={styles.nav}>
-          <h2 className={styles.heading}>Settings</h2>
+          <h2 className={styles.heading}>{t('layouts.settings')}</h2>
           <Menu className={styles.menu}>
-            <Menu.MenuItem label="General" to="general" Icon={Settings} />
-            <Menu.MenuItem label="Import/Export" to="transfer" Icon={Save} />
+            <Menu.MenuItem
+              label={t('views.general.title')}
+              to="general"
+              Icon={Settings}
+            />
+            <Menu.MenuItem
+              label={t('views.transfer.title')}
+              to="transfer"
+              Icon={Save}
+            />
           </Menu>
         </nav>
         <nav className={styles.nav}>
-          <h2 className={styles.heading}>Profiles</h2>
+          <h2 className={styles.heading}>{t('layouts.profiles')}</h2>
           <button
             className={styles.addProfile}
             title="New profile"
