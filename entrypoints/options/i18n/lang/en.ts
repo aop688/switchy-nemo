@@ -3,8 +3,10 @@ export default {
     title: 'Switchy Nemo'
   },
   layouts: {
-    settings: 'Settings',
-    profiles: 'Profiles'
+    sidebar: {
+      settings: 'Settings',
+      profiles: 'Profiles'
+    }
   },
   views: {
     general: {
@@ -14,6 +16,14 @@ export default {
     },
     transfer: {
       title: 'Import/Export'
+    },
+    profile: {
+      title: 'Profile {{name}}',
+      new: 'New Profile',
+      name: 'Profile name'
     }
+  },
+  validation: {
+    required: '{{field}} is required.'
   }
 };

@@ -3,8 +3,10 @@ export default {
     title: 'Switchy Nemo'
   },
   layouts: {
-    settings: '設定',
-    profiles: 'プロファイル'
+    sidebar: {
+      settings: '設定',
+      profiles: 'プロファイル'
+    }
   },
   views: {
     general: {
@@ -14,6 +16,14 @@ export default {
     },
     transfer: {
       title: 'インポート/エクスポート'
+    },
+    profile: {
+      title: 'プロファイル {{name}}',
+      new: '新しいプロファイル',
+      name: 'プロファイル名'
     }
+  },
+  validation: {
+    required: '{{field}}は必須です。'
   }
 };

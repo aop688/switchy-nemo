@@ -24,12 +24,14 @@ const Sidebar = observer(() => {
       name: [
         {
           required: true,
-          message: 'The name of the profile is required.',
+          message: t('validation.required', {
+            field: t('views.profile.name')
+          }),
           trigger: ['change', 'blur']
         }
       ]
     }),
-    []
+    [t]
   );
 
   const addProfile = useCallback(() => {
@@ -62,7 +64,7 @@ const Sidebar = observer(() => {
           <h1 className={styles.logoTitle}>{t('common.title')}</h1>
         </div>
         <nav className={styles.nav}>
-          <h2 className={styles.heading}>{t('layouts.settings')}</h2>
+          <h2 className={styles.heading}>{t('layouts.sidebar.settings')}</h2>
           <Menu className={styles.menu}>
             <Menu.MenuItem
               label={t('views.general.title')}
@@ -77,10 +79,10 @@ const Sidebar = observer(() => {
           </Menu>
         </nav>
         <nav className={styles.nav}>
-          <h2 className={styles.heading}>{t('layouts.profiles')}</h2>
+          <h2 className={styles.heading}>{t('layouts.sidebar.profiles')}</h2>
           <button
             className={styles.addProfile}
-            title="New profile"
+            title={t('views.profile.new')}
             onClick={addProfile}
           >
             <Plus className={styles.addIcon} />
@@ -97,7 +99,7 @@ const Sidebar = observer(() => {
         </nav>
         <Dialog
           visible={showAddProfile}
-          title={'New Profile'}
+          title={t('views.profile.new')}
           onClose={() => setShowAddProfile(false)}
           footer={
             <div className={styles.newProfileFooter}>
@@ -124,7 +126,7 @@ const Sidebar = observer(() => {
               layout="vertical"
               showRequired={false}
             >
-              <Form.Item label={'Profile name'} field="name">
+              <Form.Item label={t('views.profile.name')} field="name">
                 <Input autoFocus />
               </Form.Item>
             </Form>
