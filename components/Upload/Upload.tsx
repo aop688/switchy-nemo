@@ -6,7 +6,7 @@ import { IUploadProps } from './Upload.types';
 
 const Upload: React.FC<IUploadProps> = ({
   children,
-  onUplod,
+  onUpload,
   className,
   ...rest
 }) => {
@@ -20,10 +20,10 @@ const Upload: React.FC<IUploadProps> = ({
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { files } = event.target;
       if (files) {
-        onUplod?.(files);
+        onUpload?.(files);
       }
     },
-    [onUplod]
+    [onUpload]
   );
 
   return (

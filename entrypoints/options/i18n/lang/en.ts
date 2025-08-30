@@ -20,7 +20,13 @@ export default {
       languages: 'Languages'
     },
     transfer: {
-      title: 'Import/Export'
+      title: 'Import/Export',
+      settings: 'Settings',
+      backup: 'Backup Settings',
+      backupDesc:
+        'Make a full backup of your options (including profiles and all other options).',
+      restore: 'Restore Settings',
+      restoreDesc: 'Restore your Switchy Nemo options from a local file.'
     },
     profile: {
       title: 'Profile {{name}}',

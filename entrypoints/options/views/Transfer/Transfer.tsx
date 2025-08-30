@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { message, Button, Upload } from '@/components';
 import { useStore } from '@options/stores';
 import { downloadFile } from '@/utils/misc';
@@ -5,6 +6,7 @@ import styles from './transfer.module.css';
 
 const TransferView = () => {
   const { profiles } = useStore();
+  const { t } = useTranslation();
 
   const backupSettings = useCallback(() => {
     const data = profiles.exportProfiles();
@@ -36,24 +38,25 @@ const TransferView = () => {
   return (
     <div className={styles.transfer}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Import/Export</h1>
+        <h1 className={styles.title}>{t('views.transfer.title')}</h1>
       </header>
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Settings</h2>
+        <h2 className={styles.sectionTitle}>{t('views.transfer.settings')}</h2>
         <div className={styles.sectionBody}>
           <div className={styles.sectionItem}>
-            <Button onClick={backupSettings}>Backup Settings</Button>
+            <Button onClick={backupSettings}>
+              {t('views.transfer.backup')}
+            </Button>
             <p className={styles.sectionItemDescription}>
-              Make a full backup of your options (including profiles and all
-              other options).
+              {t('views.transfer.backupDesc')}
             </p>
           </div>
           <div className={styles.sectionItem}>
-            <Upload accept=".bak" onUplod={restoreSettings}>
-              Restore Settings
+            <Upload accept=".bak" onUpload={restoreSettings}>
+              {t('views.transfer.restore')}
             </Upload>
             <p className={styles.sectionItemDescription}>
-              Restore your Switchy Nemo options from a local file.
+              {t('views.transfer.restoreDesc')}
             </p>
           </div>
         </div>
