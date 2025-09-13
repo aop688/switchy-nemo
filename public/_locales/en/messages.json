@@ -1,8 +1,8 @@
 {
-   "appName": {
-      "message": "Switchy Nemo"
-   },
-   "description": {
-      "message": "Switchy Nemo is a browser extension that allows you to switch between different proxy servers easily."
-   }
+  "appName": {
+    "message": "Switchy Nemo"
+  },
+  "description": {
+    "message": "Switchy Nemo is a browser extension that allows you to switch between different proxy servers easily."
+  }
 }
