@@ -15,6 +15,11 @@ export default {
     }
   },
   views: {
+    about: {
+      title: 'About',
+      description: 'Switchy Nemo is a proxy management tool for Browsers.',
+      version: 'Version {{version}}'
+    },
     general: {
       title: 'General',
       profiles: 'Profiles',

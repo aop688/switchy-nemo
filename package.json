@@ -1,7 +1,7 @@
 {
   "name": "switchy-nemo",
   "description": "Switchy Nemo is a browser extension that allows you to switch between different proxy servers easily.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",

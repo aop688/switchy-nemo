@@ -13,3 +13,36 @@
 .title {
   font-size: var(--font-size-3xl);
 }
+
+.section {
+  padding: 16px 0;
+  font-size: var(--font-size-md);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &Image {
+    width: 64px;
+    height: 64px;
+  }
+
+  &Text {
+    color: var(--color-text-2);
+  }
+
+  &Title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text-0);
+  }
+}
+
+.info {
+  margin: 16px 0;
+
+  &Text {
+    margin: 8px 0;
+  }
+}

@@ -15,6 +15,11 @@ export default {
     }
   },
   views: {
+    about: {
+      title: '概要',
+      description: 'Switchy Nemo はブラウザ用のプロキシ管理ツールです。',
+      version: 'バージョン {{version}}'
+    },
     general: {
       title: '一般',
       profiles: 'プロファイル',

@@ -61,7 +61,11 @@ const Sidebar = observer(() => {
     <aside className={styles.sidebar}>
       <div className={styles.inner}>
         <div className={styles.logo}>
-          <h1 className={styles.logoTitle}>{t('common.title')}</h1>
+          <h1 className={styles.logoTitle}>
+            <Link to="/" className={styles.logoLink}>
+              {t('common.title')}
+            </Link>
+          </h1>
         </div>
         <nav className={styles.nav}>
           <h2 className={styles.heading}>{t('layouts.sidebar.settings')}</h2>

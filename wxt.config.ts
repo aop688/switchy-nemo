@@ -1,4 +1,5 @@
 import { defineConfig, UserManifest } from 'wxt';
+import { version } from './package.json';
 import svgr from 'vite-plugin-svgr';
 
 // See https://wxt.dev/api/config.html
@@ -20,6 +21,7 @@ export default defineConfig({
     const manifest: UserManifest = {
       // languages https://developer.chrome.com/docs/extensions/reference/api/i18n?hl=zh-cn#locales
       name: '__MSG_appName__',
+      version: version,
       description: '__MSG_description__',
       default_locale: 'en',
       permissions: ['activeTab', 'storage', 'proxy', 'webRequest'],

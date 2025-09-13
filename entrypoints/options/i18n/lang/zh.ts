@@ -15,6 +15,11 @@ export default {
     }
   },
   views: {
+    about: {
+      title: '关于',
+      description: 'Switchy Nemo 是一个用于浏览器的代理管理工具。',
+      version: '版本 {{version}}'
+    },
     general: {
       title: '通用',
       profiles: '模式',
