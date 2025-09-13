@@ -1,16 +1,12 @@
 import { useCallback } from 'react';
 import cls from 'clsx';
+import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { profiles } from '@options/stores';
 import profileIcon from '@/assets/nemo.svg';
 import { Profile, ProxyMode } from '@options/stores/modules/profiles';
 import { Message } from '@/entrypoints/background';
 import styles from './app.module.css';
-
-const modeOptions = [
-  { label: 'Direct', value: ProxyMode.Direct, color: '#818D7C' },
-  { label: 'System Proxy', value: ProxyMode.SystemProxy, color: '#000000' }
-];
 
 function setIcon(id: string) {
   const img = document.getElementById(id) as HTMLImageElement;
@@ -30,6 +26,19 @@ function setIcon(id: string) {
 }
 
 const App = observer(() => {
+  const { t } = useTranslation();
+
+  const modeOptions = useMemo(() => {
+    return [
+      { label: t('mode.direct'), value: ProxyMode.Direct, color: '#818D7C' },
+      {
+        label: t('mode.system'),
+        value: ProxyMode.SystemProxy,
+        color: '#000000'
+      }
+    ];
+  }, [t]);
+
   const sendMessage = useCallback((message: Message) => {
     browser.runtime.sendMessage(message).then(response => {
       if (response?.success) {
@@ -126,7 +135,7 @@ const App = observer(() => {
       ))}
       <hr className={styles.divider} />
       <a href="./options.html" target="_blank" className={styles.optionsItem}>
-        Options
+        {t('common.options')}
       </a>
     </div>
   );
