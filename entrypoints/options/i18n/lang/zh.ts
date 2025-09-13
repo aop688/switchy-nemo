@@ -33,7 +33,9 @@ export default {
       backup: '备份设置',
       backupDesc: '创建选项的完整备份（包括配置文件和所有其他选项）。',
       restore: '恢复设置',
-      restoreDesc: '从本地文件恢复您的Switchy Nemo选项。'
+      restoreDesc: '从本地文件恢复您的Switchy Nemo选项。',
+      restoreSuccess: '设置已成功恢复！',
+      restoreError: '恢复设置失败。请检查文件格式。'
     },
     profile: {
       title: '模式 {{name}}',

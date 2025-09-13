@@ -34,7 +34,9 @@ export default {
       backupDesc:
         'Make a full backup of your options (including profiles and all other options).',
       restore: 'Restore Settings',
-      restoreDesc: 'Restore your Switchy Nemo options from a local file.'
+      restoreDesc: 'Restore your Switchy Nemo options from a local file.',
+      restoreSuccess: 'Settings restored successfully!',
+      restoreError: 'Failed to restore settings. Please check the file format.'
     },
     profile: {
       title: 'Profile {{name}}',

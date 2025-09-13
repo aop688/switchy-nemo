@@ -22,17 +22,15 @@ const TransferView = () => {
         try {
           const data = JSON.parse(reader.result as string);
           profiles.setProfiles(data);
-          message.success('Settings restored successfully!');
+          message.success(t('views.transfer.restoreSuccess'));
         } catch (error) {
           console.error('Error restoring settings:', error);
-          message.error(
-            'Failed to restore settings. Please check the file format.'
-          );
+          message.error(t('views.transfer.restoreError'));
         }
       });
       reader.readAsText(file);
     },
-    [profiles]
+    [profiles, t]
   );
 
   return (

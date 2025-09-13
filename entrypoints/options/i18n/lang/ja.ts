@@ -34,7 +34,9 @@ export default {
       backupDesc:
         'オプションの完全バックアップを作成します（プロファイルやその他のすべてのオプションを含む）。',
       restore: '復元設定',
-      restoreDesc: 'ローカルファイルからSwitchy Nemoのオプションを復元します。'
+      restoreDesc: 'ローカルファイルからSwitchy Nemoのオプションを復元します。',
+      restoreSuccess: '設定が正常に復元されました！',
+      restoreError: '設定の復元に失敗しました。ファイル形式を確認してください。'
     },
     profile: {
       title: 'プロファイル {{name}}',
