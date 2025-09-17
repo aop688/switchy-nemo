@@ -3,7 +3,7 @@ import cls from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { profiles } from '@options/stores';
-import profileIcon from '@/assets/nemo.svg';
+import profileIcon from '@/assets/nemo.svg?inline';
 import { Profile, ProxyMode } from '@options/stores/modules/profiles';
 import { Message } from '@/entrypoints/background';
 import styles from './app.module.css';
