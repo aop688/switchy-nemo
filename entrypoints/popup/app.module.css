@@ -36,8 +36,7 @@ body {
     }
 
     &.selected {
-      color: var(--color-primary-text);
-      background-color: var(--color-primary);
+      background-color: var(--color-tertiary-light-selected);
     }
   }
 }
