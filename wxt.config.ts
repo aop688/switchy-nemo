@@ -41,6 +41,13 @@ export default defineConfig({
           '128': 'icon/nemo128.png'
         }
       },
+      icons: {
+        '16': 'icon/nemo16.png',
+        '32': 'icon/nemo32.png',
+        '48': 'icon/nemo48.png',
+        '96': 'icon/nemo96.png',
+        '128': 'icon/nemo128.png'
+      },
       host_permissions: ['<all_urls>']
     };
     return manifest;
