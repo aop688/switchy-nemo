@@ -14,4 +14,4 @@ A powerful and flexible proxy management extension for browsers, enabling users 
 - Switch between proxy profiles with a single click.
 - Support for various proxy types including HTTP, HTTPS, SOCKS4, SOCKS5.
 - User-friendly interface for easy configuration and management.
-1
+- build
